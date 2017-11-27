@@ -1,0 +1,135 @@
+//some of picboxx.com sign-up form codes
+
+    # if form is submitted
+    if (isset($_POST['submit'])){
+     
+
+    if(empty($_POST['username']) || empty($_POST['password']) || empty($_POST['email'])){
+     
+    $errors[] = 'All fields are required.';
+     
+    }else{
+    #validating user's input with functions that we will create next
+    if ($users->user_exists($_POST['username'],'subscribers') === true) {
+    $errors[] = 'That username already exists';
+    }
+    if(!ctype_alnum($_POST['username'])){
+    $errors[] = 'Please enter a username with only alphabets and numbers';	
+    }
+    if (strlen($_POST['password']) <6){
+    $errors[] = 'Your password must be at least 6 characters';
+    } else if (strlen($_POST['password']) >18){
+    $errors[] = 'Your password cannot be more than 18 characters long';
+    }
+    if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) === false) {
+    $errors[] = 'Please enter a valid email address';
+    }else if ($users->email_exists($_POST['email'],'subscribers') === true) {
+    $errors[] = 'That email already exists.';
+    }
+    }
+
+
+--------------------------------------------------------------------------------------------
+
+
+<form method="post" action="" id="business-register" name="myForm">
+							
+	<p id="indicate-require" class="indicate-error">*Required Fields</p>
+
+	<h5>Subscriber Registration</h5>	
+
+	<div class="form-row email-row">
+
+	<p id="indicate-confirm-email" class="indicate-error">The email addresses you entered do not match.</p>
+
+	<p id="indicate-valid-email" class="indicate-error">The email address you entered is not valid.</p>
+
+	<h6>Email:</h6>
+
+	<span class="form-field">
+
+	<p>Email*:</p>
+	
+	<input type="text" name="email" id="email" data-required="0" value="<?php if(isset($_POST['email'])) echo htmlentities($_POST['email']); ?>" />
+
+	</span>
+
+	<span class="form-field">
+
+	<p>Confirm Email*:</p>
+	
+	<input type="text" name="email-confirm" id="email-confirm" data-required="0" value="<?php if(isset($_POST['email-confirm'])) echo htmlentities($_POST['email-confirm']); ?>" />
+
+	</span>
+
+	</div>
+
+	<div class="form-row">
+
+	<h6>Name:</h6>
+
+	<span class="form-field">
+
+	<p>First Name*:</p>
+	
+	<input type="text" name="name-first-name" id="name-first-name" data-required="0" value="<?php if(isset($_POST['name-first-name'])) echo htmlentities($_POST['name-first-name']); ?>" />
+
+	</span>
+
+	<span class="form-field">
+
+	<p>Last Name*:</p>
+	
+	<input type="text" name="name-last-name" id="name-last-name" data-required="0" value="<?php if(isset($_POST['name-last-name'])) echo htmlentities($_POST['name-last-name']); ?>" />
+
+	</span>
+
+	</div>
+
+	<div class="form-row">
+
+	<h6>Contact:</h6>
+
+	<span class="form-field contact-row">
+
+	<p>Phone*:</p>
+	
+	<input type="text" name="contact-phone" id="contact-phone" data-required="0" value="<?php if(isset($_POST['contact-phone'])) echo htmlentities($_POST['contact-phone']); ?>" />
+
+	</span>
+
+	<br>
+
+	<span class="form-field">
+
+	<p>Address*:</p>
+	
+	<input type="text" name="street-address" id="street-address" data-required="0" value="<?php if(isset($_POST['street-address'])) echo htmlentities($_POST['street-address']); ?>"/>
+
+	</span>
+
+	<span class="form-field">
+
+	<p>City*:</p>
+	
+	<input type="text" name="city" id="city" data-required="0" value="<?php if(isset($_POST['city'])) echo htmlentities($_POST['city']); ?>"/>
+
+	</span>
+
+	<span class="form-field">
+
+	<p>State / Province / Region*:</p>
+	
+	<input type="text" name="state-province-region" id="state" data-required="0" value="<?php if(isset($_POST['state-province-region'])) echo htmlentities($_POST	['state-province-region']); ?>"/>
+
+	</span>
+
+	<span class="form-field">
+
+	<p>Zip / Postal Code*:</p>
+	
+	<input type="text" name="zip-postal-code" id="zip" data-required="0" value="<?php if(isset($_POST['zip-postal-code'])) echo htmlentities($_POST['zip-postal-	code']); ?>"/>
+
+	</span>
+
+</form>ml>

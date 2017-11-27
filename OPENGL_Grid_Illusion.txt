@@ -1,0 +1,56 @@
+#include <glut.h>
+
+//HERMANN GRID ILLUSION
+
+void display(void) {
+	glClear(GL_COLOR_BUFFER_BIT);
+
+	glColor3f(0.0, 0.0, 0.0);
+
+	int x1 = 1, x2 = 6, y1 = 30, y2 = 25;
+	int reset = 0, main_counter=0;
+
+
+	while (x1<=25 && x2<=30 && main_counter<=24)
+	{
+
+		glBegin(GL_QUADS);
+		glVertex2i(x1, y1);
+		glVertex2i(x2, y1);
+		glVertex2i(x2, y2);
+		glVertex2i(x1, y2);
+		glVertex2i(x1, y1);
+		glEnd();
+		glFlush();
+		x1 = x1 + 6;
+		x2 = x2 + 6;
+		
+		reset++;
+		if (reset == 5)
+		{
+			y1 = y1 - 6;
+			y2 = y2 - 6;
+			x1 = 1;
+			x2 = 6;
+		    reset = 0; //START OVER AFTER THE 5TH BOX, GO TO THE NEXT LINE
+		}
+
+		main_counter++; // MAIN COUNTER STARTS AT 0, IF 24 BOXES PRINTED STOP.
+
+	}
+}
+
+
+void main(int argc, char** argv) {
+	glutInit(&argc, argv);
+	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+	glutInitWindowSize(400, 300);
+	glutInitWindowPosition(200, 100);
+	glutCreateWindow("HERMANN GRID ILLUSION");
+	glClearColor(1.0, 1.0, 1.0, 1.0);
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	gluOrtho2D(0, 31, 0, 31); // TOP RIGHT SECTION OF THE GRAPH
+	glutDisplayFunc(display);
+	glutMainLoop();
+}

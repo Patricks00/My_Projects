@@ -1,0 +1,61 @@
+//Php codes to connect to a database and output
+//categories and brands of Items that are coming from a database.
+
+<?php
+
+  define("DB_SERVER", "localhost");
+  define("DB_USER", "root");
+  define("DB_PASS", "Contact83");
+  define("DB_NAME", "ecommerce");
+
+  $con = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
+
+  // Test if connection succeeded
+  if(mysqli_connect_errno()) {
+    die("Database connection failed: " . 
+         mysqli_connect_error() . 
+         " (" . mysqli_connect_errno() . ")"
+    );
+  }
+
+
+function getCats(){
+
+	global $con;
+
+	$get_cats = "select * from categories";
+
+	$run_cats = mysqli_query($con, $get_cats);
+
+	while ($row_cats=mysqli_fetch_array($run_cats)){
+
+		$cat_id = $row_cats['cat_id'];
+		$cat_title= $row_cats['cat_title'];
+
+	echo "<li><a href='#'>$cat_title</a></li>";
+	}
+
+}
+
+
+
+
+function getBrands(){
+
+  global $con;
+
+  $get_brands = "select * from brands";
+
+  $run_brands = mysqli_query($con, $get_brands);
+
+  while ($row_brands=mysqli_fetch_array($run_brands)){
+
+    $brand_id = $row_brands['brand_id'];
+    $brand_title= $row_brands['brand_title'];
+
+  echo "<li><a href='#'>$brand_title</a></li>";
+  }
+
+}
+
+?>

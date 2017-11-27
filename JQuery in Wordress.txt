@@ -1,0 +1,64 @@
+//I wrote this code when i was working for 4funsystem
+//Basically i wrote this codes, in order to be able to use JQuery in wordpress
+//in a regular website i would just put the scipt inside of header tags
+//In wordpress, the script have to be enqueue first.
+
+
+<?php
+
+// =============================================================================
+// FUNCTIONS.PHP
+// -----------------------------------------------------------------------------
+// Overwrite or add your own custom functions to X in this file.
+// =============================================================================
+
+// =============================================================================
+// TABLE OF CONTENTS
+// -----------------------------------------------------------------------------
+//   01. Enqueue Parent Stylesheet
+//   02. Additional Functions
+// =============================================================================
+
+// Enqueue Parent Stylesheet
+// =============================================================================
+
+add_filter( 'x_enqueue_parent_stylesheet', '__return_true' );
+
+
+
+// Additional Functions
+// =============================================================================
+
+function my_scripts_method() { //this function will enqueue the script
+	if ( !is_admin() ) {
+	wp_enqueue_script('jquery-pop');
+	wp_enqueue_script(
+		'custom-jq-pop',
+		get_stylesheet_directory_uri() . '/js/fancybox/jquery.fancybox.pack.js',
+		array('jquery')
+		);
+
+	}
+}
+
+add_action( 'wp_enqueue_scripts', 'my_scripts_method' ); // hooking the the function into the script
+
+
+
+function my_scripts_method2() {
+	if ( !is_admin() ) {
+	wp_enqueue_script('jquery-fance');
+	wp_enqueue_script(
+		'custom-jq-fance',
+		get_stylesheet_directory_uri() . '/js/fancybox/jquery.fancybox.js',
+		array('jquery')
+		);
+
+	}
+}
+
+add_action( 'wp_enqueue_scripts', 'my_scripts_method2' );
+
+//add fancy box stylesheet
+wp_register_style('jquery-custom-style', get_stylesheet_directory_uri().'/css/jquery.fancybox.css', array(), '1', 'screen');
+wp_enqueue_style('jquery-custom-style');

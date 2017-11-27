@@ -1,0 +1,658 @@
+//This is some code i wrote
+// For a Homeremodeling website
+//while working with pickboxx.com
+//Basically it's a form that let customers filing out
+// a quote page by page.
+
+<!doctype html>
+<html>
+</head>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<style type="text/css">
+::-webkit-input-placeholder {
+  color:red;
+}
+
+::-moz-placeholder {
+  color:red;
+}
+
+::-ms-placeholder {
+  color:red;
+}
+
+::placeholder {
+  color:red;
+}
+
+option {
+  background-color: black !important;
+}
+.contactform{
+  font-family: 'Open Sans Condensed', arial, sans;
+  width: 500px;
+
+  background: #FFFFFF;
+
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+  -moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+  -webkit-box-shadow:  0px 0px 15px rgba(0, 0, 0, 0.22);
+
+}
+.contactform label{
+  background: #4D4D4D none repeat scroll 0 0;
+  text-transform: uppercase;
+  font-family: 'Open Sans Condensed', sans-serif;
+  color: white;
+  font-size: 30px;
+  font-weight: 100;
+  padding: 30px
+
+}
+html{
+  background-color: gray;
+}
+.contactform input[type="text"],
+.contactform input[type="date"],
+.contactform input[type="datetime"],
+.contactform input[type="email"],
+.contactform input[type="number"],
+.contactform input[type="search"],
+.contactform input[type="time"],
+.contactform input[type="url"],
+.contactform input[type="password"],
+.contactform textarea,
+.contactform select
+{
+
+  color: white;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  outline: none;
+  display: block;
+  width: 100%;
+  padding: 7px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  background: transparent;
+  margin-bottom: 10px;
+  font: 25px Arial, Helvetica, sans-serif;
+  height: 67px;
+}
+.contactform textarea{
+  resize:none;
+  overflow: hidden;
+}
+.contactform input[type="button"], 
+.contactform input[type="submit"]{
+  -moz-box-shadow: inset 0px 1px 0px 0px #45D6D6;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #45D6D6;
+  box-shadow: inset 0px 1px 0px 0px #45D6D6;
+  background-color: #2CBBBB;
+  border: 1px solid #27A0A0;
+  display: inline-block;
+  cursor: pointer;
+  color: #FFFFFF;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 22px;
+  height: 50px;
+  padding: 8px 18px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.contactform input[type="button"]:hover, 
+.contactform input[type="submit"]:hover {
+  background:linear-gradient(to bottom, #34CACA 5%, #30C9C9 100%);
+  background-color:#34CACA;
+}
+
+
+p{
+  left:0px;
+  position: absolute;
+  margin-top: 0px;
+  width: 100%;
+  visibility: hidden;
+  height:625px;
+  background-color: green;
+  background-image: url("/templates/effortless/images/backgroundnew.png");
+  opacity: 0;
+  transition:all 1s ease;
+}
+</style>
+
+<script type="text/javascript">
+
+    // Wait for the page to load first
+    window.onload = function() {
+      var a=document.getElementById("roofing");
+      var b=document.getElementById("windows");
+      var x = document.getElementById('cntfrm');
+      var y=document.getElementById('cntfrmw');
+      
+      a.onclick = function() {    
+       x.style.visibility = 'hidden';
+
+       if (x.style.visibility == 'hidden') {
+         x.style.visibility = 'visible';
+         x.style.opacity ='1';
+
+
+       } else if (x.style.visibility = 'visible'){
+        x.style.visibility = 'hidden';
+        x.style.opacity ='0';
+
+
+      }
+      return false;
+    }
+    b.onclick = function() {
+
+      y.style.visibility = 'hidden';
+      if (y.style.visibility == 'hidden') {
+        y.style.visibility = 'visible';
+        y.style.opacity ='1';
+        
+        
+      } else if (y.style.visibility = 'visible'){
+        y.style.visibility = 'hidden';
+        y.style.opacity ='0';
+
+
+      }
+      return false;
+    }
+
+  }
+
+  function buttons(a,b){
+    var h = document.getElementById(a);
+    var i = document.getElementById(b);
+    h.style.visibility = 'hidden';
+    h.style.opacity ='0';
+    i.style.visibility='visible'
+    i.style.opacity='1';
+
+
+  }
+
+  function closefunc(a) {
+    var x = document.getElementById(a);
+    x.style.visibility = 'hidden';
+    x.style.opacity ='0';
+  }
+
+  function back(i,j){
+    var f= document.getElementById(i);
+    var g= document.getElementById(j)
+    f.style.visibility='hidden'
+    f.style.opacity='0';
+    g.style.visibility='visible';
+    g.style.opacity='1';
+
+  }
+
+  </script>
+</head>
+  <section id="page_1">
+   <ul class="link1">
+    <li><a href="javascript:myfunction()" id="roofing" class="roofing">Roofing</a></li>
+    <li><a href="javascript:myfunction()" id="windows" class="windows">Windows</a></li>
+    <li><a href="" class="garage">Garage Doors</a></li>
+    <li><a href="" class="cutters">Gutters & Protection</a></li>
+    <li><a href="" class="siding">Siding</a></li>
+    <li><a href="" class="doors">Doors</a></li>
+  </ul> 
+
+
+  <div class="contactform">
+    <p id='cntfrm'> 
+      <label>And,You are</label>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <input type="text" name="field1" placeholder="Full Name" />
+      <input type="email" name="field2" placeholder="Email" />
+      <input type="text" name="pno" placeholder="Phone Number"><br><br>
+
+      <input type="button" name="clickme" id="clickme" value="X" onclick="buttons('cntfrm','')">
+      <input type="button" value="Submit" style="float: right;" onclick="buttons('cntfrm','How')"/>
+    </p>
+
+
+    <p id = How style="visibility: hidden; ">
+      <label>How can we help you</label>
+      <br>
+
+      <input type="button" name="back" id="replacement" value="Roof replacement" onclick="buttons('How','replacementrout')" style=" width: 250px; position: relative;
+      display: block;margin: 100px auto 70px auto;">
+
+      <input type="button" name="back" id="Install" value="Install new roof" onclick="buttons('How','intallrout')" style="width: 250px; position: relative;
+      display: block;margin: 0 auto 70px auto;">
+
+      <input type="button" name="back" id="Repair" value="Repair Existing roof" onclick="buttons('How','repairrout')" style=" width: 250px; position: relative;
+      display: block;margin: 0 auto 70px auto;">
+
+      <input type="button" name="back" id="back" value="<" onclick="back('How','cntfrm')">
+      <input type="button" name="clickme" id="clickme" value="X" onclick="buttons('How','')">
+    </p>
+
+    <p id = replacementrout style="font-size: 26px; color: white; font-family: sans-serif;">
+      <label>Roof Replacement : Step 1</label>
+      <select name="Oldtype" >
+        <option value="" disabled selected>What type of roof do you have</option>
+        <option value="Asphalt Singles">Asphalt Singles</option>
+        <option value="Natural Slate">Natural Slate</option>
+        <option value="Shake Wood/Composite">Shake Wood/Composite</option>
+        <option value="Metal">Metal</option>
+        <option value="Tile">Tile</option>
+        <option value="Flat">Flat</option>
+        <option value="Single Ply">Single Ply</option>
+        <option value="Foam">Foam</option>
+      </select>
+      <select name="Newtype">
+        <option value="" disabled selected>What type of roof do you want</option>
+        <option value="Asphalt Singles">Asphalt Singles</option>
+        <option value="Natural Slate">Natural Slate</option>
+        <option value="Shake Wood/Composite">Shake Wood/Composite</option>
+        <option value="Metal">Metal</option>
+        <option value="Tile">Tile</option>
+        <option value="Flat">Flat</option>
+        <option value="Single Ply">Single Ply</option>
+        <option value="Foam">Foam</option>
+      </select>
+      What color would you like :
+      <input type="color" name="favcolor" value="#ff0000">
+      <br>
+      <input type="Text" name="width" id="width" size="4" placeholder="Width in feet">  
+      <input type="Text" id="height" name="height" size="4" onkeyup="" placeholder="Height in feet"> 
+      <input type="button" name="calculate" id="area" size="4" onclick="calculateArea('width','height','areacalc')" value="calculate">
+      <input type="Text" name="area" id="areacalc" size="4" placeholder='Area'>
+      <script>
+      function calculateArea(a,b,c) {
+        var width = document.getElementById(a).value;
+        var height = document.getElementById(b).value;
+        var area = width * height;
+        document.getElementById(c).value = area;
+        area=0;
+        width=0;
+        height=0;
+      }
+      </script>
+      <input type="button" name="back" id="back" value="<" onclick="back('replacementrout','How')">
+      <input type="button" name="clickme" id="clickme" value="X" onclick="buttons('replacementrout','')">
+      <input type="button" value="Step 2" style="float: right;" onclick="buttons('replacementrout','replacementrout2')"/>
+    </p>
+
+    <p id = replacementrout2 style="font-size: 26px; color: white; font-family: sans-serif;">
+      <label>Roof Replacement : Step 2</label>
+      <br>
+      Upload a picture of home and roof<br><br>
+      <input type="file" name="pic" accept="image/*">
+      <br>
+      When would you like to get this done?<br><br>
+      <input type="datetime-local" name="bdaytime">
+      <br>
+      Have you approached anybody else? (Enter name)<br>
+      <input type="Text" name="company" id="company" size="4">  
+      <br>
+      Want to tell us something else <br>
+      <input type="Text" name="comment" id="comment" size="4"> 
+      <br>
+      <input type="button" name="back" id="back" value="<" onclick="back('replacementrout2','replacementrout')">
+      <input type="button" name="clickme" id="clickme" value="X" onclick="buttons('replacementrout2','')">
+      <input type="button" value="Submit" onclick="buttons('replacementrout2','thankyou')" style="float: right">
+    </p>
+
+    <p id = thankyou style="font-size: 35px; color: white; font-family: sans-serif;">
+      <label>Thank You</label>
+      <br><br>    Thank you, We will get back to you shortly <br><br>
+      <input type="button" value="Main Menu" onclick="buttons('thankyou','')" style="float: right"><br>
+
+    </p>
+    <p id=intallrout style="font-size: 26px; color: white; font-family: sans-serif;">
+      <label>Roof Install : Step 1</label>
+      Is this a new construction ?  <br><br>
+      <input type="button" id='yesr' name="gender" value="Yes" onclick="yesno('otherAnswer');">
+      <input type="button" id='nor'  name="gender" value="no" onclick="alert(">
+      <br>
+      <input style="visibility: hidden;" type="text" name="otherAnswer" id="otherAnswer" placeholder="Tell us more"/>
+      <script>
+      function yesno(a){
+        document.getElementById(a).style.visibility = 'visible';
+      }
+      </script>
+      <select name="Newtype">
+        <option value="" disabled selected>What type of roof do you want</option>
+        <option value="Asphalt Singles">Asphalt Singles</option>
+        <option value="Natural Slate">Natural Slate</option>
+        <option value="Shake Wood/Composite">Shake Wood/Composite</option>
+        <option value="Metal">Metal</option>
+        <option value="Tile">Tile</option>
+        <option value="Flat">Flat</option>
+        <option value="Single Ply">Single Ply</option>
+        <option value="Foam">Foam</option>
+      </select>
+      <br>
+      What color would you like :
+      <input type="color" name="favcolor" value="#ff0000">
+      <br>
+      Upload a picture of home and roof<br>
+      <input type="file" name="pic" accept="image/*">
+      <br>
+      When would you like to get this done?<br>
+      <input type="datetime-local" name="bdaytime">
+      <br>
+      <input type="button" name="back" id="back" value="<" onclick="back('intallrout','How')">
+      <input type="button" name="clickme" id="clickme" value="X" onclick="buttons('intallrout','')">
+      <input type="button" value="Submit" onclick="buttons('intallrout','intallrout2')" style="float: right">
+    </p>
+
+    <p id=intallrout2 style="font-size: 26px; color: white; font-family: sans-serif;">
+      <label>Roof Install : Step 2</label>
+      <input type="Text" name="widthi" id="widthi" size="4" placeholder="Width in feet">   
+      <input type="Text" id="heighti" name="heighti" size="4" onkeyup="" placeholder="Height in feet">  
+      <input type="button" name="areai" id="areai" size="4" onclick="calculateArea('widthi','heighti','areacali')" value="calculate">
+      <input type="Text" name="areacali" id="areacali" size="4" placeholder='Area'>
+      <input type="Text" name="company" id="company" size="4" placeholder="Have you approached anybody else? (Enter name)">  
+      <input type="Text" name="comment" id="comment" size="4" placeholder="Want to tell is something else"> 
+      <input type="button" name="back" id="back" value="<" onclick="back('intallrout2','intallrout')">
+      <input type="button" name="clickme" id="clickme" value="X" onclick="buttons('intallrout2','')">
+      <input type="button" value="Submit" onclick="buttons('intallrout2','thankyou')" style="float: right">
+
+    </p>
+
+    <p id=repairrout style="font-size: 26px; color: white; font-family: sans-serif;">
+      <Label> Roof Repair : Step 1</Label>
+      A couple of Questions: <br><br>
+      Do you have a warranty? : <br><br>
+      <input type="button" id='yesr' name="gender" value="Yes" onclick="yesno('otherAnswerr');">
+      <input type="button" id='nor'  name="gender" value="no" >
+      <input style="visibility: hidden;" type="text" name="otherAnswer" id="otherAnswerr" placeholder="Tell us more"/>
+      <br>
+      <select name="Oldtype" >
+        <option value="" disabled selected>What type of roof do you have</option>
+        <option value="Asphalt Singles">Asphalt Singles</option>
+        <option value="Natural Slate">Natural Slate</option>
+        <option value="Shake Wood/Composite">Shake Wood/Composite</option>
+        <option value="Metal">Metal</option>
+        <option value="Tile">Tile</option>
+        <option value="Flat">Flat</option>
+        <option value="Single Ply">Single Ply</option>
+        <option value="Foam">Foam</option>
+      </select>
+      <select name="Newtype">
+        <option value="" disabled selected>What type of roof do you want</option>
+        <option value="Asphalt Singles">Asphalt Singles</option>
+        <option value="Natural Slate">Natural Slate</option>
+        <option value="Shake Wood/Composite">Shake Wood/Composite</option>
+        <option value="Metal">Metal</option>
+        <option value="Tile">Tile</option>
+        <option value="Flat">Flat</option>
+        <option value="Single Ply">Single Ply</option>
+        <option value="Foam">Foam</option>
+      </select>
+      What color would you like :
+      <input type="color" name="favcolor" value="#ff0000">
+      <br>
+      <input type="button" name="back" id="back" value="<" onclick="back('repairrout','How')">
+      <input type="button" name="clickme" id="clickme" value="X" onclick="buttons('repairrout','')">
+      <input type="button" value="Submit" onclick="buttons('repairrout','repairrout2')" style="float: right">
+    </p>
+    <p id=repairrout2 style="font-size: 26px; color: white; font-family: sans-serif;">
+      <Label> Roof Repair : Step 2</Label>
+      <input type="Text" name="widthr" id="widthr" size="4" placeholder="Width in feet">   
+      <input type="Text" id="heightr" name="heightr" size="4" onkeyup="" placeholder="Height in feet">  
+      <input type="button" name="arear" id="arear" size="4" onclick="calculateArea('widthr','heightr','areacalr')" value="calculate">
+      <input type="Text" name="areacalr" id="areacalr" size="4" placeholder='Area'>
+      Upload a picture of home and roof
+      <input type="file" name="pic" accept="image/*">
+      When would you like to get this done?
+      <input type="datetime-local" name="bdaytime">
+      <input type="Text" name="company" id="company" size="4" placeholder="Have you approached anybody else? (Enter name)">  
+      <input type="Text" name="comment" id="comment" size="4" placeholder="Want to tell is something else "> 
+      <input type="button" name="back" id="back" value="<" onclick="back('repairrout2','repairrout')">
+      <input type="button" name="clickme" id="clickme" value="X" onclick="buttons('repairrout2','')">
+      <input type="button" value="Submit" onclick="buttons('repairrout2','thankyou')" style="float: right">
+    </p>
+    <p id='cntfrmw'> 
+      <label>And,You are</label>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <input type="text" name="field1" placeholder="Full Name" />
+      <input type="email" name="field2" placeholder="Email" />
+      <input type="text" name="pno" placeholder="Phone Number"><br><br>
+
+      <input type="button" name="clickme" id="clickme" value="X" onclick="buttons('cntfrmw','')">
+      <input type="button" value="Submit" style="float: right;" onclick="buttons('cntfrmw','winopt')"/>
+    </p>
+
+    <p id = winopt style="visibility: hidden; ">
+      <label>How can we help you</label>
+      <br>
+      <input type="button" name="back" id="replacement" value="Window replacement" onclick="buttons('winopt','winrepl')" style= "width: 250px; position: relative; display: block;margin: 100px auto 70px auto;">
+      <input type="button" name="back" id="Install" value="Custom Window" onclick="buttons('winopt','wincustom')" style="width: 250px; position: relative; display: block;margin: 0 auto 70px auto;">
+
+      <input type="button" name="back" id="Repair" value="Window Repair" onclick="buttons('winopt','winrepair')" style=" width: 250px; position: relative; display: block;margin: 0 auto 70px auto;">
+
+      <input type="button" name="back" id="back" value="<" onclick="back('winopt','cntfrmw')">
+      <input type="button" name="clickme" id="clickme" value="X" onclick="buttons('winopt','')">
+    </p>
+    <p id=winrepl style="visibility: hidden; font-size: 26px; color: white; font-family: sans-serif;">
+      <label>Window Replacement : Step 1</label>
+      How many windows do you want replaced? <input type='number'>
+      What type of widows are we replacing ? <br>
+      <input type="checkbox" name="windowtype" value="Single hung">Single hung &nbsp
+      <input type="checkbox" name="windowtype" value="Fixed/Picture">Fixed/Picture &nbsp
+      <input type="checkbox" name="windowtype" value="Double hung">Double hung &nbsp
+      <input type="checkbox" name="windowtype" value="Awning Transom">Awning Transom &nbsp
+      <input type="checkbox" name="windowtype" value="Double Casement">Double Casement&nbsp
+      <input type="checkbox" name="windowtype" value="Slider">Slider &nbsp
+      <input type="checkbox" name="windowtype" value="Hopper Transom">Hopper Transom &nbsp
+      <input type="checkbox" name="windowtype" value="Pass Through">Pass Through<br><br>
+      <input type="checkbox" name="windowtype" value="Single Casement">Single Casement &nbsp
+      <input type="checkbox" name="windowtype" value="Singer Hopper">Singer Hopper &nbsp
+      <input type="checkbox" name="windowtype" value="Single Awning">Single Awning &nbsp
+      <input type="checkbox" name="windowtype" value="Vertical Pivot">Vertical Pivot &nbsp
+      <input type="checkbox" name="windowtype" value="Horizontal Pivot">Horizontal Pivot &nbsp
+      <input type="checkbox" name="windowtype" value="Uneven Single Hung">Uneven Single Hung &nbsp
+      <input type="checkbox" name="windowtype" value="Uneven Double Hung">Uneven Double Hung &nbsp <br><br>
+      <input type="checkbox" name="windowtype" value="Casement">Casement
+      <input type="checkbox" name="windowtype" value="Double Hung">Double Hung &nbsp
+      <input type="checkbox" name="windowtype" value="Bay">Bay &nbsp
+      <input type="checkbox" name="windowtype" value="Picture ">Picture &nbsp
+      <input type="checkbox" name="windowtype" value="Garden">Garden &nbsp
+      <input type="checkbox" name="windowtype" value="Radius ">Radius &nbsp
+      <input type="checkbox" name="windowtype" value= "Bow">Bow&nbsp
+      <input type="checkbox" name="windowtype" value="Glider">Glider &nbsp<br>
+      <input type='text' name='dontknow' id='dontknow' placeholder="Don't know what kind of windows you have, tell us.">
+      <select name="oldtypew">
+        <option value="" disabled selected>What are your current windows made of?</option>
+        <option value="Wood">Wood</option>
+        <option value="Aluminium">Aluminium</option>
+        <option value="Steel">Steel</option>
+        <option value="Vinyl">Vinyl</option>
+        <option value="Vinyl Clad Wood">Vinyl Clad Wood</option>
+        <option value="Aluminum Clad Wood">Aluminum Clad Wood</option>
+        <option value="Fiber Glass">Fiber Glass</option>
+        <option value="Composite">Composite</option>
+      </select>
+      <select>
+        <option value="" disabled selected>What type of windows do you want</option>
+        <option value="Asphalt Singles">Asphalt Singles</option>
+        <option value="Natural Slate">Natural Slate</option>
+        <option value="Shake Wood/Composite">Shake Wood/Composite</option>
+        <option value="Metal">Metal</option>
+        <option value="Tile">Tile</option>
+        <option value="Flat">Flat</option>
+        <option value="Single Ply">Single Ply</option>
+        <option value="Foam">Foam</option>
+      </select>
+      <input type="button" name="back" id="back" value="<" onclick="back('winrepl','winopt')">
+      <input type='button' name='close' id='close' value='X' onclick="buttons('winrepl','')">
+      <input type="button" value="Submit" style="float: right;" onclick="buttons('winrepl','winrepl2')"/>
+    </p>
+    <p id=winrepl2 style="visibility: hidden; font-size: 26px; color: white; font-family: sans-serif;">
+      <label>Window Replacement : Step 2</label>
+
+      What color would you like :
+      <input type="color" name="favcolor" value="#ff0000">
+      <input type="Text" name="widthwr" id="widthwr" size="4" placeholder="Width in feet">  
+      <input type="Text" id="heightwr" name="heightwr" size="4" onkeyup="" placeholder="Height in feet"> 
+      <input type="button" name="calculatewr" id="areawr" size="4" onclick="calculateArea('widthwr','heightwr','areacalcwr')" value="calculate">
+      <input type="Text" name="areawr" id="areacalcwr" size="4" placeholder='Area'>
+      When would you like to get this done?
+      <input type="datetime-local" name="bdaytime">
+      <input type="Text" name="company" id="company" size="4" placeholder="Have you approached anybody else? (Enter name)<br>"> 
+      <input type="Text" name="comment" id="comment" size="4" placeholder="Want to tell us something"> 
+      <input type="button" name="back" id="back" value="<" onclick="back('winrepl2','winrepl')">
+      <input type='button' name='close' id='close' value='X' onclick="buttons('winrepl2','')">
+      <input type="button" value="Submit" style="float: right;" onclick="buttons('winrepl2','thankyou')"/>
+    </p>
+    <p id=wincustom style="visibility: hidden; font-size: 26px; color: white; font-family: sans-serif;">
+     <label>Custon Window: Step 1</label>
+     How many custom windows do you want ? <input type='number'>
+     What type of custom widows do you want ? <br>
+     <input type="checkbox" name="windowtype" value="Single hung">Single hung &nbsp
+     <input type="checkbox" name="windowtype" value="Fixed/Picture">Fixed/Picture &nbsp
+     <input type="checkbox" name="windowtype" value="Double hung">Double hung &nbsp
+     <input type="checkbox" name="windowtype" value="Awning Transom">Awning Transom &nbsp
+     <input type="checkbox" name="windowtype" value="Double Casement">Double Casement&nbsp
+     <input type="checkbox" name="windowtype" value="Slider">Slider &nbsp
+     <input type="checkbox" name="windowtype" value="Hopper Transom">Hopper Transom &nbsp
+     <input type="checkbox" name="windowtype" value="Pass Through">Pass Through<br><br>
+     <input type="checkbox" name="windowtype" value="Single Casement">Single Casement &nbsp
+     <input type="checkbox" name="windowtype" value="Singer Hopper">Singer Hopper &nbsp
+     <input type="checkbox" name="windowtype" value="Single Awning">Single Awning &nbsp
+     <input type="checkbox" name="windowtype" value="Vertical Pivot">Vertical Pivot &nbsp
+     <input type="checkbox" name="windowtype" value="Horizontal Pivot">Horizontal Pivot &nbsp
+     <input type="checkbox" name="windowtype" value="Uneven Single Hung">Uneven Single Hung &nbsp
+     <input type="checkbox" name="windowtype" value="Uneven Double Hung">Uneven Double Hung &nbsp <br><br>
+     <input type="checkbox" name="windowtype" value="Casement">Casement
+     <input type="checkbox" name="windowtype" value="Double Hung">Double Hung &nbsp
+     <input type="checkbox" name="windowtype" value="Bay">Bay &nbsp
+     <input type="checkbox" name="windowtype" value="Picture ">Picture &nbsp
+     <input type="checkbox" name="windowtype" value="Garden">Garden &nbsp
+     <input type="checkbox" name="windowtype" value="Radius ">Radius &nbsp
+     <input type="checkbox" name="windowtype" value= "Bow">Bow&nbsp
+     <input type="checkbox" name="windowtype" value="Glider">Glider &nbsp<br>
+     <input type='text' name='dontknow' id='dontknow' placeholder="Don't know what kind of windows you have, tell us.">
+     <select name="oldtypew">
+      <option value="" disabled selected>What are your current windows made of?</option>
+      <option value="Wood">Wood</option>
+      <option value="Aluminium">Aluminium</option>
+      <option value="Steel">Steel</option>
+      <option value="Vinyl">Vinyl</option>
+      <option value="Vinyl Clad Wood">Vinyl Clad Wood</option>
+      <option value="Aluminum Clad Wood">Aluminum Clad Wood</option>
+      <option value="Fiber Glass">Fiber Glass</option>
+      <option value="Composite">Composite</option>
+    </select>
+    <select>
+      <option value="" disabled selected>What type of custom windows do you want</option>
+      <option value="Asphalt Singles">Asphalt Singles</option>
+      <option value="Natural Slate">Natural Slate</option>
+      <option value="Shake Wood/Composite">Shake Wood/Composite</option>
+      <option value="Metal">Metal</option>
+      <option value="Tile">Tile</option>
+      <option value="Flat">Flat</option>
+      <option value="Single Ply">Single Ply</option>
+      <option value="Foam">Foam</option>
+    </select>
+    <input type="button" name="back" id="back" value="<" onclick="back('wincustom','winopt')">
+    <input type='button' name='close' id='close' value='X' onclick="buttons('wincustom','')">
+    <input type="button" value="Submit" style="float: right;" onclick="buttons('wincustom','wincustom2')"/>
+  </p>
+  <p id=wincustom2 style="visibility: hidden; font-size: 26px; color: white; font-family: sans-serif;">
+    <label>Custom Windows  Step 2</label>
+    What color would you like :
+    <input type="color" name="favcolor" value="#ff0000"><br>
+    How many feet exactly, yes we need you to measure!"<br><br>
+    Step 1&nbsp &nbsp
+    Find the width. Measure from the inside of the jamb on one side of the window to the inside of the <br>
+    jamb on the other side of the window. Measure at the  bottom, middle and top of the window. Use the<br>
+    narrowest measurement for the width of your replacement window.<br><br>
+    Step 2&nbsp &nbsp
+    Find the height. Measure from the top of the sill to the bottom of the window's head jamb. Measure at <br>
+    the left, middle and right of the window. Use the shortest measurement for the height of your <br>
+    replacement window.<br><br>
+    Upload a picture of home and roof
+    <input type="file" name="pic" accept="image/*">
+    When would you like to get this done?
+    <input type="datetime-local" name="bdaytime">
+    <input type="Text" name="company" id="company" size="4" placeholder="Have you approached anybody else? (Enter name)">  
+    <input type="Text" name="comment" id="comment" size="4" placeholder="Want to tell is something else "> 
+    <input type="button" name="back" id="back" value="<" onclick="back('wincustom2','wincustom')">
+    <input type="button" name="clickme" id="clickme" value="X" onclick="buttons('wincustom2','')">
+    <input type="button" value="Submit" onclick="buttons('wincustom2','thankyou')" style="float: right">
+  </p>
+  <p id=winrepair style="visibility: hidden; font-size: 26px; color: white; font-family: sans-serif;">
+    <label>Window Repair : Step 1</label>
+    How many windows are damaged ? <input type='number'>
+    Do you know the type of window that is damaged? <br><br>
+    <input type="checkbox" name="windowtype" value="Single hung">Single hung &nbsp
+    <input type="checkbox" name="windowtype" value="Fixed/Picture">Fixed/Picture &nbsp
+    <input type="checkbox" name="windowtype" value="Double hung">Double hung &nbsp
+    <input type="checkbox" name="windowtype" value="Awning Transom">Awning Transom &nbsp
+    <input type="checkbox" name="windowtype" value="Double Casement">Double Casement&nbsp
+    <input type="checkbox" name="windowtype" value="Slider">Slider &nbsp
+    <input type="checkbox" name="windowtype" value="Hopper Transom">Hopper Transom &nbsp
+    <input type="checkbox" name="windowtype" value="Pass Through">Pass Through<br><br>
+    <input type="checkbox" name="windowtype" value="Single Casement">Single Casement &nbsp
+    <input type="checkbox" name="windowtype" value="Singer Hopper">Singer Hopper &nbsp
+    <input type="checkbox" name="windowtype" value="Single Awning">Single Awning &nbsp
+    <input type="checkbox" name="windowtype" value="Vertical Pivot">Vertical Pivot &nbsp
+    <input type="checkbox" name="windowtype" value="Horizontal Pivot">Horizontal Pivot &nbsp
+    <input type="checkbox" name="windowtype" value="Uneven Single Hung">Uneven Single Hung &nbsp
+    <input type="checkbox" name="windowtype" value="Uneven Double Hung">Uneven Double Hung &nbsp <br><br>
+    <input type="checkbox" name="windowtype" value="Casement">Casement
+    <input type="checkbox" name="windowtype" value="Double Hung">Double Hung &nbsp
+    <input type="checkbox" name="windowtype" value="Bay">Bay &nbsp
+    <input type="checkbox" name="windowtype" value="Picture ">Picture &nbsp
+    <input type="checkbox" name="windowtype" value="Garden">Garden &nbsp
+    <input type="checkbox" name="windowtype" value="Radius ">Radius &nbsp
+    <input type="checkbox" name="windowtype" value= "Bow">Bow&nbsp
+    <input type="checkbox" name="windowtype" value="Glider">Glider &nbsp<br>
+    <input type='text' name='dontknow' id='dontknow' placeholder="Don't know what kind of windows you have, tell us.">
+    <select name="oldtypew">
+      <option value="" disabled selected>What are your current windows made of?</option>
+      <option value="Wood">Wood</option>
+      <option value="Aluminium">Aluminium</option>
+      <option value="Steel">Steel</option>
+      <option value="Vinyl">Vinyl</option>
+      <option value="Vinyl Clad Wood">Vinyl Clad Wood</option>
+      <option value="Aluminum Clad Wood">Aluminum Clad Wood</option>
+      <option value="Fiber Glass">Fiber Glass</option>
+      <option value="Composite">Composite</option>
+      <input type="button" name="back" id="back" value="<" onclick="back('winrepair','winopt')">
+      <input type='button' name='close' id='close' value='X' onclick="buttons('winrepair','')">
+      <input type="button" value="Submit" style="float: right;" onclick="buttons('winrepair','winrepair2')"/>
+    </select>
+  </p>
+  <p id='winrepair2' style="visibility: hidden; font-size: 26px; color: white; font-family: sans-serif;">
+    <label>Window repair:Step 2</label>
+    What color are they :
+    <input type="color" name="favcolor" value="#ff0000"><br>
+    Upload a picture of home and roof
+    <input type="file" name="pic" accept="image/*">
+    When would you like to get this Fixed?
+    <input type="datetime-local" name="bdaytime">
+    <input type="Text" name="company" id="company" size="4" placeholder="Have you approached anybody else? (Enter name)">  
+    <input type="Text" name="comment" id="comment" size="4" placeholder="Want to tell is something else "> 
+    <br><br><br><br><br><br><br>
+    <input type="button" name="back" id="back" value="<" onclick="back('winrepair2','winrepair')">
+    <input type='button' name='close' id='close' value='X' onclick="buttons('winrepair2','')">
+    <input type="button" value="Submit" style="float: right;" onclick="buttons('winrepair2','thankyou')"/>
+
+  </p>
+</section>
+</html>

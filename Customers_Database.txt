@@ -1,0 +1,157 @@
+// .net program that uses knockoutjs. to let users inputing and save their info
+//in the database.
+
+
+@model IEnumerable<CustomeWebsite.Models.Customer>
+
+@{
+    ViewBag.Title = "Index";
+
+}
+
+<h2>Index</h2>
+
+<div class="row">
+    <input type="button" onclick="DisplayCustomers()" value="Show Customers" />           //displaying the Customers name
+</div>
+<div id="dvCustomers">
+    <table class="table" id="tblCustomers">
+        <tr>
+            <th>CustomerID</th>
+            <th>CustomerName</th>
+            <th>ContactName</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>PostalCode</th>
+            <th>Country</th>
+        </tr>
+
+        <tbody data-bind="foreach: lookupCollection"> // data binding the infos
+            <tr>
+
+                <td data-bind="text:CustomerID"></td>
+
+                <td data-bind="text:CustomerName"></td>
+
+                <td data-bind="text:ContactName"></td>
+
+                <td data-bind="text:Address"></td>
+
+                <td data-bind="text:City"></td>
+
+                <td data-bind="text:PostalCode"></td>
+
+                <td data-bind="text:Country"></td>
+
+            </tr>
+
+        </tbody>
+
+
+        <tr script type="text/html" id="create">
+
+            <td><input type="text" data-bind="text:CustomerID"></td>
+            <td><input type="text" data-bind="text:CustomerName" /></td>
+            <td><input type="text" data-bind="text:ContactName" /></td>
+            <td><input type="text" data-bind="text:Address" /></td>
+            <td><input type="text" data-bind="text:City" /></td>
+            <td><input type="text" data-bind="text:PostalCode" /></td>
+            <td><input type="text" data-bind="text:Country" /></td>
+
+
+
+
+        </tr>
+
+
+    </table>
+    <div>
+        <button class="btn btn-success kout-save" onclick="saveData(this)">Update</button>
+    </div>               
+</div>
+
+@section scripts{
+    <script>
+        viewModel = {
+            lookupCollection: ko.observableArray()
+        };
+
+        $(document).ready(function () {
+            $(document).on("click", ".kout-update", null, function (ev) {
+                var current = ko.dataFor(this);
+                current.Mode("display");
+            })
+        });
+
+
+        function DisplayCustomers() {
+            if (!ko.dataFor(document.getElementById('dvCustomers'))) {
+                $.ajax({
+                    type: "GET",
+                    url: "/Customers/GetIndex",
+                }).done(function (data) {
+                    $(data).each(function (index, element) {
+                        viewModel.lookupCollection.push(element);
+                    });
+                    ko.applyBindings(viewModel, document.getElementById('dvCustomers'));
+                }).error(function (ex) {
+                    alert("Error");
+                });
+            }
+        }
+
+
+        //creating row of datas
+
+
+        $(document).on("click", "#btncreate", null, function (ev) {
+            var current = {
+                CustomerID: ko.observable(0),
+                CustomerName: ko.observable(),
+                ContactName: ko.observable(),
+                Address: ko.observable("edi"),
+                City: ko.observable(),
+                Country: ko.observable(),
+                PostalCode: ko.observable(),
+            }
+            viewModel.lookupCollection.push(current);
+        });
+
+
+        //Save current datas
+        function saveData(currentData) {
+            var postUrl = "";
+            var submitData = {
+
+
+                CustomerID: currentData.CustomerID,
+                CustomerName: currentData.CustomerName,
+                ContactName: currentData.ContactName,
+                Address: currentData.Address,
+                City: currentData.City,
+                Country: currentData.Country,
+                PostalCode: currentData.PostalCode
+
+            };
+            if (currentData.Id && currentData.Id > 0) {
+                postUrl = "/Customers/Edit"
+            }
+            else {
+                postUrl = "/Customers/Create"
+            }
+            $.ajax({
+                type: "POST",
+                contentType: "application/json",
+                url: postUrl,
+                data: JSON.stringify(submitData)
+            }).done(function (id) {
+                currentData.Id(id);
+            }).error(function (ex) {
+                alert("ERROR Saving");
+            })
+        }
+
+
+
+    </script>
+}

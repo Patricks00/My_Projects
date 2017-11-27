@@ -1,0 +1,220 @@
+// This is some responsive design code
+//that i wrote for a homeremodeling website
+// So the site will looks normal in mostly in any device screen size.
+// from 340px to 1200px and more.
+
+
+@media screen and (max-width: 1200px) {
+  .uk-navbar-nav > li > a {
+    font-size: 12px;
+    padding: 0 12px;
+
+  }
+}
+
+
+@media screen and (max-width: 960px) {
+  #page_1{
+    max-width:960px;
+    height: 300px;
+    margin:0 auto;
+    background-image: url("../images/background_960.png");
+    background-repeat: no-repeat;
+    background-position:center;
+    position: relative;
+  }
+
+  .link1 {
+    width: 769px;
+    float:right;
+    margin-right: 5px;
+    margin-top: 90px;
+    list-style: none;
+    display: block;
+  }
+
+  .link1 li{
+    float:left;
+    margin: 0;
+    padding: 0;
+  }
+
+  .link1 a{
+    width: 126px;
+    height: 96px;
+    display:block;
+    text-align: center;
+    padding-top: 100px;
+    text-decoration: none;
+    font-family: Champagne,sans-serif;
+    font-size:20px;
+    color:#000; 
+    background-image: url(../images/icons_menu_.png);
+    background-repeat: no-repeat;
+  }
+
+  .uk-navbar-nav > li > a {
+    font-size: 12px;
+    padding: 0 12px;
+
+  }
+
+
+}
+
+
+
+@media screen and (max-width: 768px) {
+  #page_1{
+    max-width:768px;
+    height: 300px;
+    margin:0 auto;
+    background-image: url("../images/background_768.png");
+    background-repeat: no-repeat;
+    background-position:center;
+  }
+
+  .uk-navbar-nav > li > a {
+    font-size: 12px;
+    padding: 0 12px;
+
+  }
+
+  .link1 {
+    max-width: 500px;
+    width:500px;
+    margin:60px auto 0px auto;
+    list-style: none;
+    display: block;
+
+  }
+
+  .link1 a{
+    width: 82px;
+    height: 40px;
+    display:block;
+    text-align: center;
+    padding-top: 60px;
+    text-decoration: none;
+    font-family: Champagne,sans-serif;
+    font-size:18px;
+    line-height:16px;
+    color:#000; 
+    background-image: url(../images/icons_menu_768.png);
+    background-repeat: no-repeat;
+  }
+
+  .link1 a.roofing{background-position: 8px 0px;}
+  .link1 a.windows{background-position: -75px 0px;}
+  .link1 a.garage{background-position: -158px 0px;}
+  .link1 a.cutters{background-position: -240px 0px;}
+  .link1 a.siding{background-position: -325px 0px;}
+  .link1 a.doors{background-position: -408px 0px;}
+
+}
+
+@media screen and (max-width: 480px) {
+  #page_1{
+    display: block;
+    height: 270px;
+    overflow: hidden;
+    max-width: 480px;
+    background-image: url("../images/background_480.png");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .link1 {
+    width: 340px;
+    margin:40px auto 0px auto;
+    position:relative;
+
+  }
+
+  .link1 a{
+    width: 87px;
+    line-height:15px;
+    height: 30px;
+    display:block;
+    text-align: center;
+    padding-top: 65px;
+    text-decoration: none;
+    font-family: Champagne,sans-serif;
+    font-size:16px;
+    color:#000; 
+    background-image: url(../images/icons_menu_480_.png);
+    background-repeat: no-repeat;
+  }
+
+  .link1 a.roofing{background-position: 8px 0px;}
+  .link1 a.windows{background-position: -74px 0px;}
+  .link1 a.garage{background-position: -159px 0px;}
+  .link1 a.cutters{background-position: -235px 0px;}
+  .link1 a.siding{background-position: -325px 0px;}
+  .link1 a.doors{background-position: -410px 0px;}
+
+  .link1 a.roofing:hover{transform: translate(0px,-10px);}
+  .link1 a.windows:hover{transform: translate(0px,-10px);}
+  .link1 a.garage:hover{transform: translate(0px,-10px);}
+  .link1 a.cutters:hover{transform: translate(0px,-10px);}
+  .link1 a.siding:hover{transform: translate(0px,-10px);}
+  .link1 a.doors:hover{transform: translate(0px,-10px);}
+
+}
+
+@media screen and (max-width: 340px) {
+  #page_1{
+    display: block;
+    height: 250px;
+    overflow: hidden;
+    max-width: 340px;
+    background-image: url("../images/background_480.png");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .link1 {
+    width: 270px;
+    margin-right:10px auto 0px auto;
+    position:relative;
+
+  }
+
+
+
+  .link1 a{
+    width: 87px;
+    line-height:15px;
+    height: 30px;
+    display:block;
+    text-align: center;
+    padding-top: 65px;
+    text-decoration: none;
+    font-family: Champagne,sans-serif;
+    font-size:15px;
+    color:#000; 
+    background-image: url(../images/icons_menu_480_.png);
+    background-repeat: no-repeat;
+  }
+
+  .link1 a.roofing{background-position: 8px 0px;}
+  .link1 a.windows{background-position: -74px 0px;}
+  .link1 a.garage{background-position: -159px 0px;}
+  .link1 a.cutters{background-position: -235px 0px;}
+  .link1 a.siding{background-position: -325px 0px;}
+  .link1 a.doors{background-position: -410px 0px;}
+
+  .link1 a.roofing:hover{transform: translate(0px,-10px);}
+  .link1 a.windows:hover{transform: translate(0px,-10px);}
+  .link1 a.garage:hover{transform: translate(0px,-10px);}
+  .link1 a.cutters:hover{transform: translate(0px,-10px);}
+  .link1 a.siding:hover{transform: translate(0px,-10px);}
+  .link1 a.doors:hover{transform: translate(0px,-10px);}
+}
+

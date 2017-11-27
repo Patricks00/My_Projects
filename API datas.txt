@@ -1,0 +1,56 @@
+//Basically i wrote this codes to import pictures and link
+//from an affeliate website. To another website that need to be created.
+//just one way to import datas in php using API
+//I wrote this code when i was working for 4funsystem
+
+
+
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Links</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+ <link href="links.css" rel="stylesheet">
+
+</head>
+<body>
+
+    <section>
+        <div id="mainbox">
+
+            <div id ="cambox">
+                <?php
+                    $performers_url ='http://www.flirt4free.com/webservices/performers.php?method=getLiveModels&api_key=*****************************************************************************&mp_code=a****&data_type=json&service=g***';
+
+
+
+                    $performers_json = file_get_contents($performers_url);
+                    $performers_array = json_decode($performers_json,true);
+                    $rand_keys = array_rand($performers_array['guys'], 15);
+
+                    for ($i = 0; $i < 15; $i++) {
+                        $performer = $performers_array['guys'][$rand_keys[$i]];
+            
+                        $performer_name = $performer['name'];
+                    
+                ?>
+
+                <ul class="cam-badge">
+                    <li >
+                        <img src="<?php echo $performer_image; ?>" width="230px" height="150px" alt="<?php echo $performer_name; ?>">
+                    </li>
+                        <a target = '_balnk' href="<?php echo $performer_link; ?>">
+                          
+                            <p><?php echo $performer_name; ?></p>
+                      </a>
+                </ul>
+
+                <?php   }
+                ?>
+            </div>
+
+    </section>
+</body>
+</html>

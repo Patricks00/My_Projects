@@ -1,0 +1,165 @@
+<?php
+
+    require 'core/init.php';
+	
+	$general->logged_in_protect();
+	
+	setcookie('user', 'subscribers', time()+3600);
+     
+    if (empty($_POST) === false) {
+     
+		$username = trim($_POST['username']);
+		$password = trim($_POST['password']);
+		 
+			if (empty($username) === true || empty($password) === true) {
+				
+				$errors[] = 'Sorry, but we need your username and password.';
+				} else if ($users->user_exists($username, 'subscribers') === false) {
+				$errors[] = 'Sorry that username doesn\'t exist.';
+				} else if ($users->email_confirmed($username, 'subscribers') === false) {
+				$errors[] = 'Sorry, but you need to activate your account. Please check your email.';
+			
+			} else {
+			 
+			$login = $users->login($username, $password, 'subscribers');
+			
+			if ($login === false) {
+				$errors[] = 'Sorry, that username/password is invalid';
+				}
+			else {
+				session_regenerate_id(true);// destroying the old session id and creating a new one
+				$_SESSION['id'] = $login;
+				header('Location: index.php');
+				exit();
+			}
+		}
+    }
+?>
+
+<!doctype html>
+<head>
+	<title>PickBoxx.com: Get Deals Win Stuff</title>
+	
+	<?php include 'includes/stylesheets-and-scripts.php'; ?>
+	
+	<script src="rsc/js/login.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+	
+	<div id="wrapper-body">
+	
+		<div id="site-alerts-container">
+				
+			<div id="site-alerts-bg"></div>
+							
+			<div id="site-alerts">
+								
+				<div id="site-alerts-warning">
+									
+					<div class="btn btn-dark-grey close-x">X</div>
+										
+				</div>
+								
+			</div>
+				
+		</div>
+									
+		<div id="wrapper-main">
+			
+			<div id="main" class="main-content">
+			
+				<?php 
+			
+					include 'includes/header-navigation.php';
+					
+					include 'includes/header-navigation-scroll.php';
+					
+					include 'includes/db-alerts.php';
+					
+					include 'includes/twitter-feed.php';
+				
+					?>
+				
+				<div id="main-middle" class="main-middle-content main-middle-form form-login">
+					
+					<div id="main-middle-inner">
+					
+						<form method="post" action="">
+							
+							<div id="form-heading">
+							
+								<h6>Subscriber Login</h6>
+								
+							</div>
+							
+							<div class="form-row">
+							
+								<span class="form-field">
+								
+								<p>Username:</p>
+								
+								<input type="text" name="username" id="username" data-required="0" value="<?php if(isset($_POST['username'])) echo htmlentities($_POST['username']); ?>" />
+								
+								</span>
+								
+								<br>
+								
+								<span class="form-field">
+								
+								<p>Password:</p>
+								
+								<input type="password" name="password" id="password" data-required="0" />
+							
+								</span>
+								
+							</div>
+							
+							<br>
+													
+							<input type="submit" name="submit" id="btn-submit" class="btn btn-dark-grey" value="Submit" />
+						
+							<span id="btn-validate" class="btn btn-dark-grey">Submit</span>
+							
+							<p><a href="confirm-recover.php">Forgot your username/password?</a></p>
+						
+						</form>
+					
+					</div>	
+								
+					<hr class="toolboxx-promo-hr">
+					
+					<div id="toolboxx-promos">
+					
+						<div id="toolboxx-promos-overlay"></div>
+					
+							<?php 
+					
+							include 'includes/toolboxx-promo-1.php';
+							include 'includes/toolboxx-promo-2.php';
+										
+							?>
+						
+						</div>
+						
+					
+					</div>
+				
+				</div>
+			
+		</div>
+		<!-- /wrapper-main -->
+		
+	</div>
+
+<!-- /wrapper-body --> 
+
+
+</div>
+
+
+
+</body>
+
+</html>
