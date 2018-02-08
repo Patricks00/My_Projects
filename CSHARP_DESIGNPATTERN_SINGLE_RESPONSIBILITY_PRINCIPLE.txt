@@ -1,0 +1,64 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Diagnostics;
+using System.IO;
+using static System.Console;
+
+
+//# THIS PROGRAM IS ABOUT DESIGN PATTERN
+//# SINGLE RESPONSIBILITY PRINCIPLE WHERE EACH TYPICAL CLASS RESPONSIBLE
+//# FOR ONE THING AND HAS ONE REASON TO CHANGE.
+
+namespace Dpattern_SingleResp
+{    
+    public class Journal
+    {        
+        private readonly List<string> entries = new List<string>();
+        private static int count = 0;
+        
+        public int AddEntry(string text)
+        {
+            entries.Add($"{++count}: {text}");
+            return count;
+        }
+
+        public void RemoveEntry(int index)
+        {
+            entries.RemoveAt(index);
+        }
+
+        public override string ToString()
+        {
+            return string.Join(Environment.NewLine, entries);
+        }
+     }
+
+    public class Persistence
+    {
+        public void SaveToFile(Journal j, string filename, bool overwrite = false)
+        {
+            if (overwrite || !File.Exists(filename))
+                File.WriteAllText(filename, j.ToString());
+        }
+    }
+
+    public class Demo
+    {
+        public static void Main(string[] args)
+        {
+            var j = new Journal();
+            j.AddEntry("My First Journal (1st)");
+            j.AddEntry("My Second Journal (2nd)");
+            WriteLine(j);
+
+            var p = new Persistence();
+            var filename = @"c:\Users\pat\Documents\my_journal.txt";
+            p.SaveToFile(j, filename, true);
+            Console.ReadLine();
+
+        }        
+    }
+}
+
