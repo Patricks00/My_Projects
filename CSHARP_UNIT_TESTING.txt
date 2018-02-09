@@ -1,0 +1,60 @@
+using NUnit.Framework;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using FizzBuzz.Library;
+using FizzBuzzer;
+
+
+//TEST DRIVIN DEVELOPMENT THAT TEST
+//NUMBERS FROM 1 TO 100
+//THAT IS DIVISIBLE BY BOTH 3 AND 5
+//OR THAT'S DIVISIBLE BY ONLY 3
+//OR THAT'S DIVISIBLE BY ONLY 5
+//OR ANY DEFAULT NUMBER
+
+namespace FizzBuzzer.Library.Test
+{
+    [TestFixture]
+    public class FizzBuzzerTest
+    {
+        [Test]
+        public void Buzzer_WhenDefault_ReturnsInput(
+            [Values(1,2,4,7,8,11,13,14,16,17,19)] int input)
+        {
+        
+            string output = FizzBuzzer.GetValue(input);
+
+            Assert.AreEqual(input.ToString(), output);
+
+        }
+
+
+        [Test]
+        public void Buzzer_When3_ReturnsFizz([Values(3,6,9,12,18)] int input)
+        {
+            //int input = 3;
+            string output = FizzBuzzer.GetValue(input);
+            Assert.AreEqual("Fizz", output);
+        }
+
+        [Test]
+        public void Buzzer_When3_ReturnsBuzz([Values(5,10,20)] int input)
+        {
+           // int input = 5;
+            string output = FizzBuzzer.GetValue(input);
+            Assert.AreEqual("Buzz", output);
+        }
+
+        [Test]
+        public void Buzzer_WhenDiv3andDiv5([Values(15)] int input)
+        {
+            // int input = 3, 5;
+            string output = FizzBuzzer.GetValue(input);
+            Assert.AreEqual("FizzBuzz", output);
+        }
+
+    }
+}
